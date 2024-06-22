@@ -49,7 +49,7 @@ export default function EditTodoForm({ todo }: { todo: ITodo }) {
       >
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <InputField  key={form.key('title')} {...form.getInputProps('title')}/>
-          <MantineButton variant="filled" color="teal" type="submit">
+          <MantineButton variant="filled" color="teal" type="submit" className='mt-4'>
             Save
           </MantineButton>
         </form>
