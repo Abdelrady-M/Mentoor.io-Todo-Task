@@ -2,6 +2,7 @@ import { Badge, Table, Checkbox  } from '@mantine/core';
 import { ITodo } from '../../interfaces';
 import { useState } from 'react';
 import TodosTableActions from '../TodoTableActions/TodosTableActions';
+import useMongez from '../../hooks/useMongez';
 
 /**
  * Renders a table component displaying a list of todos.
@@ -11,6 +12,7 @@ import TodosTableActions from '../TodoTableActions/TodosTableActions';
  */
 export function TableField({todos}:{todos:ITodo[]}) {
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
+  const { toggleTodo } = useMongez();
 
   const rows = todos.map((element) => (
     
@@ -19,29 +21,30 @@ export function TableField({todos}:{todos:ITodo[]}) {
             <Checkbox
               aria-label="Select row"
               checked={selectedRows.includes(element.id)}
-              onChange={(event) =>
+              onChange={()=>{
                 setSelectedRows(
-                  event.currentTarget.checked
-                    ? [...selectedRows, element.id]
-                    : selectedRows.filter((position) => position !== element.id)
-                )
-              }
+                  selectedRows.includes(element.id)
+                   ? selectedRows.filter((position) => position!== element.id)
+                    : [...selectedRows, element.id]
+                );
+                toggleTodo(element.id);
+              }}
             />
 
       </Table.Td>
       <Table.Td>{element.id}</Table.Td>
       <Table.Td>{element.title}</Table.Td>
-      <Table.Td>
-        {element.completed? <Badge color="green">Completed</Badge> : <Badge color="red">Not Completed</Badge>}
+      <Table.Td >
+        {element.completed? <Badge color="green"  size="sm">Completed</Badge > : <Badge color="red"  size="sm">Not Completed</Badge>}
         </Table.Td>
       <Table.Td>
-        <TodosTableActions/>
-      </Table.Td>
+        <TodosTableActions todo={element}/>
+      </Table.Td> 
     </Table.Tr>
   ));
 
   return (
-    <Table  captionSide="top" withRowBorders={false} highlightOnHover >
+    <Table  captionSide="top" withRowBorders={false} highlightOnHover  >
       <Table.Caption>A list of your recent Todos.</Table.Caption>
       <Table.Thead>
         <Table.Tr>
@@ -52,7 +55,7 @@ export function TableField({todos}:{todos:ITodo[]}) {
           <Table.Th>Actions</Table.Th>
         </Table.Tr>
       </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
+      <Table.Tbody>{!rows.length? "You Don't have any todo yet": rows}</Table.Tbody>
     </Table>
   );
 }

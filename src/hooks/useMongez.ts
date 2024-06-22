@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { ITodo } from "../interfaces"
 import { todoAtom } from "../store/mongez/mongezStore"
 
@@ -23,6 +24,22 @@ const useMongez = ()=>{
         const newTodos = todos.filter((todo)=> todo.id !== id)
         setTodos(newTodos)
     }
-    return {todos, addTodo, toggleTodo, removeTodo}
+    const updateTodo = (id:number, title:string)=>{
+        const newTodos = todos.map((todo)=>{
+            if(todo.id === id){
+                return {...todo, title}
+            }
+            return todo
+        })
+        setTodos(newTodos)
+    }
+    useEffect(() => {
+        if (!localStorage.getItem("mongez")) return;
+        const storedData = JSON.parse(localStorage.getItem("mongez") as string);
+        if (Array.isArray(storedData)) {
+          setTodos(storedData as ITodo[]);
+        }
+      }, []);
+    return {todos, addTodo, toggleTodo, removeTodo, updateTodo}
 }
 export default useMongez
