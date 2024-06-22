@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction  } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, Middleware  } from "@reduxjs/toolkit";
 import { ITodo } from "../../../interfaces";
 
 
@@ -25,14 +25,22 @@ export const todoSlice = createSlice({
         updateTodo: (state, action:PayloadAction<{id:number, title:string}>) => {
             const index = state.findIndex((todo) => todo.id === action.payload.id)
             state[index].title = action.payload.title
-        }
-
+        },
+        setTodos: (state, action:PayloadAction<ITodo[]>) => {
+            state.splice(0, state.length, ...action.payload)
+        },
     }
 
 })
 // LocalStorage
 
+export const SyncLocalStorage: Middleware = (store) => (next) => (action) => {
+    const result = next(action);
+    console.log("[Sync...] ", store.getState().todos);
+    localStorage.setItem("redux", JSON.stringify(store.getState().todos));
+    return result;
+  };
 
-export const { addTodo, toggleTodo, removeTodo, updateTodo } = todoSlice.actions
+export const { addTodo, toggleTodo, removeTodo, updateTodo, setTodos } = todoSlice.actions
 
 export default todoSlice.reducer
