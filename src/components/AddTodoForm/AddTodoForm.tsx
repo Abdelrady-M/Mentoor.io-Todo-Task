@@ -6,7 +6,7 @@ import { InputField } from "../ui/inputs";
 import { useForm } from '@mantine/form';
 import useMongez from '../../hooks/useMongez';
 import { useState } from 'react';
-import { ITodo } from '../../interfaces';
+import { ITodo } from '../../types';
 export default function AddTodoForm() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { todos, addTodo } = useMongez()

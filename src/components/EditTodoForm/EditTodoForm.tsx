@@ -1,6 +1,6 @@
 import { useForm } from '@mantine/form';
 import useMongez from '../../hooks/useMongez';
-import { ITodo } from '../../interfaces';
+import { ITodo } from '../../types';
 import ModalTodo from '../ui/Model';
 import { InputField } from '../ui/inputs';
 import MantineButton from '../ui/Button';

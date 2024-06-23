@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import { ITodo } from "../interfaces"
-import { todoAtom } from "../store/mongez/mongezStore"
+import { ITodo } from "../types"
+import { todoAtom } from "../store/atoms/tod-do-atom"
 
 const useMongez = ()=>{
     const [todos, setTodos] = todoAtom.useState()

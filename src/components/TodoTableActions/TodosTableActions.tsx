@@ -2,7 +2,7 @@
 import { Button, Dialog, Text } from "@mantine/core"
 import { Trash } from "lucide-react"
 import useMongez from "../../hooks/useMongez"
-import { ITodo } from "../../interfaces"
+import { ITodo } from "../../types"
 import EditTodoForm from "../EditTodoForm"
 import { useState } from "react"
 

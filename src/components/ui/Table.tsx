@@ -1,5 +1,5 @@
 import { Badge, Table, Checkbox  } from '@mantine/core';
-import { ITodo } from '../../interfaces';
+import { ITodo } from '../../types';
 import { useState } from 'react';
 import TodosTableActions from '../TodoTableActions/TodosTableActions';
 import useMongez from '../../hooks/useMongez';

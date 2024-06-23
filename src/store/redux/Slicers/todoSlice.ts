@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, Middleware  } from "@reduxjs/toolkit";
-import { ITodo } from "../../../interfaces";
+import { ITodo } from "../../../types";
 
 
 const initialState: ITodo[] = [{
