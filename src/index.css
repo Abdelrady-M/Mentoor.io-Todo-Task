@@ -5,6 +5,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html[dir="rtl"] {
+body {
+  direction: ltr;
   font-family: Cairo;
 }
