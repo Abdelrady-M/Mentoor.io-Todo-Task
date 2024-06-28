@@ -59,7 +59,7 @@ export function TableField({todos}:{todos:ITodo[]}) {
         <Table.Th>{transFrom(lang, "actions")}</Table.Th>
         </Table.Tr>
       </Table.Thead>
-      <Table.Tbody>{!rows.length? "You Don't have any todo yet": rows}</Table.Tbody>
+      <Table.Tbody>{!rows.length? <Table.Tr><Table.Td colSpan={5}>{transFrom(lang, "todoWrong")}</Table.Td></Table.Tr>: rows}</Table.Tbody>
     </Table>
   );
 }
