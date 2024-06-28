@@ -1,12 +1,16 @@
 
 import { Button, Dialog, Text } from "@mantine/core"
 import { Trash } from "lucide-react"
-import useMongez from "../../hooks/useMongez"
+import useMongez from "../../shared/hooks/useMongez"
 import { ITodo } from "../../types"
 import EditTodoForm from "../EditTodoForm"
 import { useState } from "react"
+import useLanguageStore from "../../store/zustand/useLanguageStore"
+import { transFrom } from "@mongez/localization"
 
 const TodosTableActions = ({todo}:{todo:ITodo}) => {
+  const lang = useLanguageStore((state) => state.lang);
+
   const { removeTodo } = useMongez()
   const [opened, setOpened] = useState(false)
 
@@ -32,10 +36,10 @@ const TodosTableActions = ({todo}:{todo:ITodo}) => {
         title="Delete Todo"
         
       >
-        <Text size="lg" mb="xs">Delete Todo</Text>
-        <Text size="md" mb="xs" fw={500}>Are you sure you want to delete this todo?</Text>
-          <Button variant="subtle" className="mr-3" onClick={handleClose}>Cancel</Button>
-          <Button color="red" onClick={handleConfirm}>Delete</Button>
+        <Text size="lg" mb="xs">{transFrom(lang, "deleteTodo")}</Text>
+        <Text size="md" mb="xs" fw={500}>{transFrom(lang, "titleDelete")}</Text>
+          <Button variant="subtle" className="mr-3" onClick={handleClose}>{transFrom(lang, "cancel")}</Button>
+          <Button color="red" onClick={handleConfirm}>{transFrom(lang, "delete")}</Button>
       </Dialog>
       <Button variant="subtle" color="red" onClick={handleRemove}>
         <Trash size={16}/>

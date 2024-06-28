@@ -14,7 +14,6 @@
     "@mantine/form": "^7.10.2",
     "@mantine/hooks": "^7.10.2",
     "@mantine/modals": "^7.10.2",
-    "@mongez/react-atom": "^5.0.0",
     "@mongez/cache": "^1.2.4",
     "@mongez/config": "^1.0.26",
     "@mongez/dom": "^1.1.2",
@@ -23,6 +22,7 @@
     "@mongez/huskier": "^2.0.0",
     "@mongez/localization": "^2.2.4",
     "@mongez/react": "^3.0.6",
+    "@mongez/react-atom": "^5.0.0",
     "@mongez/react-form": "^2.1.3",
     "@mongez/react-helmet": "^1.0.9",
     "@mongez/react-hooks": "^1.3.3",
@@ -35,7 +35,9 @@
     "lucide-react": "^0.395.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^9.1.2"
+    "react-redux": "^9.1.2",
+    "sass": "^1.77.6",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

@@ -4,10 +4,14 @@ import { TableField } from "../ui/Table";
 import MantineButton from "../ui/Button";
 import { InputField } from "../ui/inputs";
 import { useForm } from '@mantine/form';
-import useMongez from '../../hooks/useMongez';
+import useMongez from '../../shared/hooks/useMongez';
 import { useState } from 'react';
 import { ITodo } from '../../types';
+import LanguageSwitch from '../App/LanguageSwitch';
+import {transFrom } from '@mongez/localization';
+import useLanguageStore from '../../store/zustand/useLanguageStore';
 export default function AddTodoForm() {
+  const lang = useLanguageStore((state) => state.lang);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { todos, addTodo } = useMongez()
   const form = useForm<ITodo>({
@@ -42,6 +46,9 @@ const handleSubmit = (values: ITodo) => {
 
   return (
     <>
+
+       <div className='flex justify-between w-full'>
+        <LanguageSwitch/>
        <MantineButton
             variant="filled"
             color="teal"
@@ -49,14 +56,15 @@ const handleSubmit = (values: ITodo) => {
             style={{ maxWidth: 150 }}
           >
             <Plus size={14} className="mr-1" />
-            New Todo
+            {transFrom(lang, 'addTodo')}
           </MantineButton>
+       </div>
           <TableField todos={todos}  />
           <ModalTodo isOpen={isModalOpen} closeModal={handleCloseModal}>
             <form  onSubmit={form.onSubmit(handleSubmit)}>
               <InputField   key={form.key('title')} {...form.getInputProps('title')}/>
               <MantineButton variant="filled" color="teal" style={{ width: 100, marginTop: 10 }} type="submit">
-                 Save
+              {transFrom(lang, 'save')}
               </MantineButton>
             </form>
           </ModalTodo>

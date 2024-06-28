@@ -2,7 +2,9 @@ import { Badge, Table, Checkbox  } from '@mantine/core';
 import { ITodo } from '../../types';
 import { useState } from 'react';
 import TodosTableActions from '../TodoTableActions/TodosTableActions';
-import useMongez from '../../hooks/useMongez';
+import useMongez from '../../shared/hooks/useMongez';
+import useLanguageStore from '../../store/zustand/useLanguageStore';
+import { transFrom } from '@mongez/localization';
 
 /**
  * Renders a table component displaying a list of todos.
@@ -11,6 +13,8 @@ import useMongez from '../../hooks/useMongez';
  * @return {JSX.Element} The rendered table component.
  */
 export function TableField({todos}:{todos:ITodo[]}) {
+  const lang = useLanguageStore((state) => state.lang);
+
   const [selectedRows, setSelectedRows] = useState<number[]>([]);
   const { toggleTodo } = useMongez();
 
@@ -35,7 +39,7 @@ export function TableField({todos}:{todos:ITodo[]}) {
       <Table.Td>{element.id}</Table.Td>
       <Table.Td>{element.title}</Table.Td>
       <Table.Td >
-        {element.completed? <Badge color="green"  size="sm">Completed</Badge > : <Badge color="red"  size="sm">Not Completed</Badge>}
+        {element.completed? <Badge color="green"  size="sm">{transFrom(lang, "completed")}</Badge > : <Badge color="red"  size="sm">{transFrom(lang, "incompleted")}</Badge>}
         </Table.Td>
       <Table.Td>
         <TodosTableActions todo={element}/>
@@ -45,14 +49,14 @@ export function TableField({todos}:{todos:ITodo[]}) {
 
   return (
     <Table  captionSide="top" withRowBorders={false} highlightOnHover  >
-      <Table.Caption>A list of your recent Todos.</Table.Caption>
+      <Table.Caption>{transFrom(lang, "tableTitle")}</Table.Caption>
       <Table.Thead>
         <Table.Tr>
         <Table.Th />
           <Table.Th>ID</Table.Th>
-          <Table.Th>Title</Table.Th>
-          <Table.Th>Completed</Table.Th>
-          <Table.Th>Actions</Table.Th>
+          <Table.Th>{transFrom(lang, "title")}</Table.Th>
+          <Table.Th>{transFrom(lang, "completed")}</Table.Th>
+        <Table.Th>{transFrom(lang, "actions")}</Table.Th>
         </Table.Tr>
       </Table.Thead>
       <Table.Tbody>{!rows.length? "You Don't have any todo yet": rows}</Table.Tbody>
