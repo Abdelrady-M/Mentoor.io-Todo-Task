@@ -53,7 +53,7 @@ export function TableField({todos}:{todos:ITodo[]}) {
       <Table.Thead>
         <Table.Tr>
         <Table.Th />
-          <Table.Th>ID</Table.Th>
+          <Table.Th>{transFrom(lang, "id")}</Table.Th>
           <Table.Th>{transFrom(lang, "title")}</Table.Th>
           <Table.Th>{transFrom(lang, "completed")}</Table.Th>
         <Table.Th>{transFrom(lang, "actions")}</Table.Th>
