@@ -32,6 +32,7 @@
     "@mongez/supportive-is": "^2.0.3",
     "@mongez/user": "^1.0.13",
     "@reduxjs/toolkit": "^2.2.5",
+    "@tabler/icons-react": "^3.7.0",
     "lucide-react": "^0.395.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
