@@ -1,26 +1,27 @@
 
-import { NativeSelect } from "@mantine/core";
+import {Select } from "@mantine/core";
 import useLanguageStore from "../../../store/zustand/useLanguageStore";
 
 export default function LanguageSwitch() {
   const lang = useLanguageStore((state) => state.lang);
   const setLang = useLanguageStore((state) => state.setLang);
-
-  const handleLangChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLang(e.target.value);
+  
+  const handleLangChange = (value: string | null ) => {
+    setLang(value);
   };
 
   return (
-    <NativeSelect
+    <Select
         name="lang"
         id="lang"
         className="w-32 border border-gray-400 rounded "
         value={lang}
         onChange={handleLangChange}
-      >
-          <option value="en">English</option>
-          <option value="ar">العربية</option>
-  </NativeSelect>
+        data={[
+          { value: 'ar', label: 'English' },
+          { value: 'en', label: 'العربية' },
+          ]}
+      />
   );
 }
 
