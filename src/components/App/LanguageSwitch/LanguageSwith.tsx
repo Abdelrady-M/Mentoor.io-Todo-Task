@@ -6,10 +6,11 @@ export default function LanguageSwitch() {
   const lang = useLanguageStore((state) => state.lang);
   const setLang = useLanguageStore((state) => state.setLang);
   
-  const handleLangChange = (value: string | null ) => {
-    setLang(value);
+  const handleLangChange = (value: string | null) => {
+    if (value) {
+      setLang(value);
+    }
   };
-
   return (
     <Select
         name="lang"

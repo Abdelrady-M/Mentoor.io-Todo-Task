@@ -5,5 +5,5 @@ export type ITodo = {
 }
 export type ILanguageType = {
     lang: string;
-    setLang: (lang: string | null) => void;
+    setLang: (lang: string ) => void;
   };
