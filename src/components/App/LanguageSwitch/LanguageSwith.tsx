@@ -19,8 +19,8 @@ export default function LanguageSwitch() {
         value={lang}
         onChange={handleLangChange}
         data={[
-          { value: 'ar', label: 'English' },
-          { value: 'en', label: 'العربية' },
+          { value: 'en', label: 'English' },
+          { value: 'ar', label: 'العربية' },
           ]}
       />
   );
