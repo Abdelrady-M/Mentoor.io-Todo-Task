@@ -6,15 +6,22 @@ import FloatIndicator from "./components/ui/FloatingIndicator";
 import ToggleTheme from "./components/App/toggleTheme/ToggleTheme";
 import { Notifications } from "@mantine/notifications";
 import '@mantine/notifications/styles.css';
+import useMongez from "./shared/hooks/useMongez";
+import SkeletonUi from "./components/ui/Skeleton";
 
 function App() {
+  const {  isLoading } = useMongez()
   return (
       <MantineProvider defaultColorScheme="dark" cssVariablesSelector="html" withCssVariables={false} deduplicateCssVariables={false} withStaticClasses={false} withGlobalClasses={false} >
         <div className="flex flex-col items-center justify-center w-screen">
           <div className="container mx-auto flex flex-col space-y-8 justify-center items-center lg:w-1/2 mt-28">
             <ToggleTheme/>
             <FloatIndicator/>
-            <AddTodoForm/> 
+            {isLoading ? (
+              <SkeletonUi  />
+            ) : (
+              <AddTodoForm/> 
+            )}
             <Footer />
           </div>
         </div>
