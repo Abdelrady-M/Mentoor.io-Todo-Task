@@ -10,10 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mantine/core": "^7.10.2",
+    "@mantine/core": "^7.11.0",
     "@mantine/form": "^7.10.2",
-    "@mantine/hooks": "^7.10.2",
+    "@mantine/hooks": "^7.11.0",
     "@mantine/modals": "^7.10.2",
+    "@mantine/notifications": "^7.11.0",
     "@mongez/cache": "^1.2.4",
     "@mongez/config": "^1.0.26",
     "@mongez/dom": "^1.1.2",

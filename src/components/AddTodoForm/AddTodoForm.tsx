@@ -10,6 +10,7 @@ import { ITodo } from '../../types';
 import LanguageSwitch from '../App/LanguageSwitch';
 import {transFrom } from '@mongez/localization';
 import useLanguageStore from '../../store/zustand/useLanguageStore';
+import { notifications } from '@mantine/notifications';
 export default function AddTodoForm() {
   const lang = useLanguageStore((state) => state.lang);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -41,6 +42,12 @@ const handleSubmit = (values: ITodo) => {
   };
   addTodo(newTodo);
   form.reset();
+  notifications.show({
+    maw: 2000,
+   autoClose: 2000,
+   title: 'Todo added',
+   message: 'Todo added successfully',
+ })
   handleCloseModal();
 };
 

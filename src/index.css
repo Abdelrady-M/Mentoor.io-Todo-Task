@@ -6,6 +6,5 @@
 @tailwind utilities;
 
 body {
-  direction: ltr;
   font-family: Cairo;
 }

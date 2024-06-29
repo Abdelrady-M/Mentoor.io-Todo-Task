@@ -23,6 +23,7 @@ const useMongez = ()=>{
     const removeTodo = (id:number)=>{
         const newTodos = todos.filter((todo)=> todo.id !== id)
         setTodos(newTodos)
+        
     }
     const updateTodo = (id:number, title:string)=>{
         const newTodos = todos.map((todo)=>{
