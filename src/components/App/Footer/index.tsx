@@ -1,4 +1,4 @@
-import { transFrom } from "@mongez/localization";
+import { trans } from "@mongez/localization";
 import useLanguageStore from "../../../store/zustand/useLanguageStore";
 import { Text } from "@mantine/core";
 
@@ -10,17 +10,17 @@ export default function Footer() {
       <Text size="sm" >
         © {new Date().getFullYear()} 
         {' '}
-        {transFrom(lang, "copyrights")}
+        {trans("copyrights", lang)}
       </Text>
       <Text size="sm" >
-        {transFrom(lang, "developedby")}
+        {trans("developedby", lang)}
         {' '}
         <a
           href="https://github.com/Abdelrady-M"
           target="_blank"
           rel="noreferrer"
         >
-          {transFrom(lang, "author")}
+          {trans("author", lang)}
         </a>
       </Text>
     </div>

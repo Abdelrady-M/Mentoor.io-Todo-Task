@@ -50,7 +50,7 @@ const translations: TranslationsList = {
 };
 
 setLocalizationConfigurations({
-  defaultLocaleCode: 'en',
-  fallback: 'ar',
+  defaultLocaleCode: "ar",
+  fallback: 'en',
   translations: translations,
 });

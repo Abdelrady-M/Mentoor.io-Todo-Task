@@ -4,7 +4,7 @@ import { useState } from 'react';
 import TodosTableActions from '../TodoTableActions/TodosTableActions';
 import useMongez from '../../shared/hooks/useMongez';
 import useLanguageStore from '../../store/zustand/useLanguageStore';
-import { transFrom } from '@mongez/localization';
+import { trans } from '@mongez/localization';
 
 /**
  * Renders a table component displaying a list of todos.
@@ -39,7 +39,7 @@ export function TableField({todos}:{todos:ITodo[]}) {
       <Table.Td>{element.id}</Table.Td>
       <Table.Td>{element.title}</Table.Td>
       <Table.Td >
-        {element.completed? <Badge color="green"  size="sm">{transFrom(lang, "completed")}</Badge > : <Badge color="red"  size="sm">{transFrom(lang, "incompleted")}</Badge>}
+        {element.completed? <Badge color="green"  size="sm">{trans("completed", lang)}</Badge > : <Badge color="red"  size="sm">{trans("incompleted", lang)}</Badge>}
         </Table.Td>
       <Table.Td>
         <TodosTableActions todo={element}/>
@@ -49,17 +49,17 @@ export function TableField({todos}:{todos:ITodo[]}) {
 
   return (
     <Table  captionSide="top" withRowBorders={false} highlightOnHover  >
-      <Table.Caption>{transFrom(lang, "tableTitle")}</Table.Caption>
+      <Table.Caption>{trans("tableTitle", lang)}</Table.Caption>
       <Table.Thead>
         <Table.Tr>
         <Table.Th />
-          <Table.Th>{transFrom(lang, "id")}</Table.Th>
-          <Table.Th>{transFrom(lang, "title")}</Table.Th>
-          <Table.Th>{transFrom(lang, "completed")}</Table.Th>
-        <Table.Th>{transFrom(lang, "actions")}</Table.Th>
+          <Table.Th>{trans("id", lang)}</Table.Th>
+          <Table.Th>{trans("title", lang)}</Table.Th>
+          <Table.Th>{trans("completed", lang)}</Table.Th>
+        <Table.Th>{trans("actions", lang)}</Table.Th>
         </Table.Tr>
       </Table.Thead>
-      <Table.Tbody>{!rows.length? <Table.Tr><Table.Td colSpan={5}>{transFrom(lang, "todoWrong")}</Table.Td></Table.Tr>: rows}</Table.Tbody>
+      <Table.Tbody>{!rows.length? <Table.Tr><Table.Td colSpan={5}>{trans("todoWrong", lang)}</Table.Td></Table.Tr>: rows}</Table.Tbody>
     </Table>
   );
 }

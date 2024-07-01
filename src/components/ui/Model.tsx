@@ -1,7 +1,7 @@
 import {ReactNode } from "react";
 import { Modal } from '@mantine/core';
 import useLanguageStore from "../../store/zustand/useLanguageStore";
-import { transFrom } from "@mongez/localization";
+import { trans } from "@mongez/localization";
 // import { InputField } from "./inputs";
 // import MantineButton from "./Button";
 
@@ -27,7 +27,7 @@ function ModalTodo(props: IProps) {
       opened={isOpen}
       onClose={closeModal}
 
-      title={title ?? transFrom(lang, 'newtitle')}
+      title={title ?? trans('newtitle', lang)}
       centered
     >
       {children}
