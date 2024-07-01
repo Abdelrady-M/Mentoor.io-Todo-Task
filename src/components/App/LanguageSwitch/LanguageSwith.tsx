@@ -4,7 +4,10 @@ import useLanguageStore from "../../../store/zustand/useLanguageStore";
 import { setCurrentLocaleCode } from "@mongez/localization";
 
 export default function LanguageSwitch() {
-  const { lang, setLang } = useLanguageStore((state) => ({
+  const {
+    lang,
+    setLang,
+  } = useLanguageStore((state) => ({
     lang: state.lang,
     setLang: state.setLang,
   }));
@@ -30,4 +33,5 @@ export default function LanguageSwitch() {
     />
   );
 }
+
 
