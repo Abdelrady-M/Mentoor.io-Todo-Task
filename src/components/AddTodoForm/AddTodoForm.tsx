@@ -9,11 +9,9 @@ import { useState } from 'react';
 import { ITodo } from '../../types';
 import LanguageSwitch from '../App/LanguageSwitch';
 import {trans } from '@mongez/localization';
-import useLanguageStore from '../../store/zustand/useLanguageStore';
 import { notifications } from '@mantine/notifications';
 import SkeletonUi from '../ui/Skeleton';
 export default function AddTodoForm() {
-  const lang = useLanguageStore((state) => state.lang);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { todos, addTodo, isLoading } = useMongez()
   const form = useForm<ITodo>({
@@ -64,7 +62,7 @@ const handleSubmit = (values: ITodo) => {
             style={{ maxWidth: 150 }}
           >
             <Plus size={14} className="mr-1" />
-            {trans('addTodo', lang)}
+            {trans('addTodo')}
           </MantineButton>
        </div>
           {isLoading ? <SkeletonUi /> : <TableField todos={todos}  />}
@@ -72,7 +70,7 @@ const handleSubmit = (values: ITodo) => {
             <form  onSubmit={form.onSubmit(handleSubmit)}>
               <InputField   key={form.key('title')} {...form.getInputProps('title')}/>
               <MantineButton variant="filled" color="teal" style={{ width: 100, marginTop: 10 }} type="submit">
-              {trans('save', lang)}
+              {trans('save')}
               </MantineButton>
             </form>
           </ModalTodo>

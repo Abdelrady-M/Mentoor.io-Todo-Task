@@ -6,12 +6,10 @@ import useMongez from "../../shared/hooks/useMongez"
 import { ITodo } from "../../types"
 import EditTodoForm from "../EditTodoForm"
 import { useState } from "react"
-import useLanguageStore from "../../store/zustand/useLanguageStore"
 import { trans } from "@mongez/localization"
 import {notifications } from "@mantine/notifications"
 
 const TodosTableActions = ({todo}:{todo:ITodo}) => {
-  const lang = useLanguageStore((state) => state.lang);
 
   const { removeTodo } = useMongez()
   const [opened, setOpened] = useState(false)
@@ -45,10 +43,10 @@ const TodosTableActions = ({todo}:{todo:ITodo}) => {
         title="Delete Todo"
         
       >
-        <Text size="lg" mb="xs">{trans("deleteTodo", lang)}</Text>
-        <Text size="md" mb="xs" fw={500}>{trans("titleDelete", lang)}</Text>
-          <Button variant="subtle" className="mr-3" onClick={handleClose}>{trans("cancel", lang)}</Button>
-          <Button color="red" onClick={handleConfirm}>{trans("delete", lang)}</Button>
+        <Text size="lg" mb="xs">{trans("deleteTodo")}</Text>
+        <Text size="md" mb="xs" fw={500}>{trans("titleDelete")}</Text>
+          <Button variant="subtle" className="mr-3" onClick={handleClose}>{trans("cancel")}</Button>
+          <Button color="red" onClick={handleConfirm}>{trans("delete")}</Button>
       </Dialog>
       <Button variant="subtle" color="red" onClick={handleRemove} > 
         <Trash size={16}/>

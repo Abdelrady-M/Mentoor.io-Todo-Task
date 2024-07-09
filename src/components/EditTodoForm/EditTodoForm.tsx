@@ -6,11 +6,9 @@ import { InputField } from '../ui/inputs';
 import MantineButton from '../ui/Button';
 import { useState } from 'react';
 import { Pen } from 'lucide-react';
-import useLanguageStore from '../../store/zustand/useLanguageStore';
 import { trans } from '@mongez/localization';
 
 export default function EditTodoForm({ todo }: { todo: ITodo }) {
-  const lang = useLanguageStore((state) => state.lang);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { updateTodo } = useMongez();
@@ -49,12 +47,12 @@ export default function EditTodoForm({ todo }: { todo: ITodo }) {
       <ModalTodo
         isOpen={isModalOpen}
         closeModal={handleCloseModal}
-        title={trans('editTodo', lang)}
+        title={trans('editTodo')}
       >
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <InputField  key={form.key('title')} {...form.getInputProps('title')}/>
           <MantineButton variant="filled" color="teal" type="submit" className='mt-4'>
-            {trans('save', lang)}
+            {trans('save')}
           </MantineButton>
         </form>
       </ModalTodo>
